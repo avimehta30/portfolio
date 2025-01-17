@@ -1,3 +1,4 @@
+/* Existing styles for the body */
 body {
   font-family: Arial, sans-serif; /* Or your chosen font */
   line-height: 1.6; /* Good readability */
@@ -5,4 +6,43 @@ body {
   margin-inline: max(1em, (100% - 100ch) / 2); /* Center content */
   padding-inline: 1em; /* Prevent content from touching the edges */
   text-align: center; /* Center align all content */
+}
+
+/* Define the accent color */
+:root {
+  --color-accent: oklch(65% 50% 0); /* Accent color for hover and active states */
+}
+
+html {
+  accent-color: var(--color-accent); /* Apply accent color globally */
+}
+
+/* Navigation bar styles */
+nav {
+  display: flex; /* Use Flexbox for layout */
+  justify-content: space-around; /* Spread links evenly */
+  align-items: center; /* Center links vertically */
+  margin-bottom: 1em; /* Add spacing below the navigation bar */
+  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle bottom border */
+  padding: 0.5em 0; /* Add padding inside the nav bar */
+}
+
+nav a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the same text color as the parent */
+  text-align: center; /* Center text inside the links */
+  flex: 1; /* Make all links take equal width */
+  padding: 0.5em; /* Add padding inside each link */
+  border-bottom: 0; /* Remove default border */
+  transition: all 0.3s ease-in-out; /* Smooth hover effects */
+}
+
+nav a.current {
+  border-bottom: 0.4em solid oklch(80% 3% 200); /* Highlight active page */
+  padding-bottom: 0.1em; /* Reduce bottom padding to counter the border */
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent); /* Highlight hover with accent color */
+  background-color: oklch(95% 5% 0); /* Subtle background on hover */
 }
