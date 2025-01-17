@@ -61,51 +61,66 @@ form {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Labels: Align on the left and span one column */
-form label {
-  grid-column: 1; /* Place in the first column */
-  font-weight: bold; /* Make labels bold */
-  margin-block: auto; /* Align vertically in the grid */
+/* General form styling */
+form {
+  display: grid; /* Enable grid layout */
+  grid-template-columns: auto 1fr; /* Two columns: auto for labels, 1fr for inputs */
+  gap: 1em; /* Add spacing between rows and columns */
+  max-width: 600px; /* Limit form width */
+  margin: 2em auto; /* Center the form horizontally */
+  padding: 1em; /* Add padding around the form */
+  border: 1px solid #ddd; /* Add a light border */
+  border-radius: 8px; /* Round the corners */
+  background-color: #f9f9f9; /* Add a light background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
-/* Inputs and textarea: Take the second column */
+/* Labels: Align on the left */
+form label {
+  font: inherit; /* Inherit font styles from the page */
+  grid-column: 1; /* Place labels in the first column */
+  margin-block: auto; /* Center labels vertically */
+  font-weight: bold; /* Make labels bold for emphasis */
+}
+
+/* Inputs and textarea: Full-width fields in the second column */
 form input,
 form textarea {
-  grid-column: 2; /* Place in the second column */
-  width: 100%; /* Make inputs full width */
-  padding: 0.5em; /* Add padding inside inputs */
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 4px; /* Round corners */
-  font: inherit; /* Inherit font settings */
-  box-sizing: border-box; /* Include padding and border in width */
+  grid-column: 2; /* Place inputs in the second column */
+  width: 100%; /* Make inputs take full width */
+  padding: 0.5em; /* Add padding for usability */
+  border: 1px solid #ccc; /* Add a light border */
+  border-radius: 4px; /* Round corners for modern design */
+  font: inherit; /* Use the same font as the rest of the page */
+  box-sizing: border-box; /* Include padding and border in the width */
 }
 
-/* Textarea: Add a bit more vertical height */
+/* Textarea: Ensure it resizes properly */
 form textarea {
-  resize: vertical; /* Allow vertical resizing only */
-  min-height: 100px; /* Set minimum height */
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Set a minimum height for usability */
 }
 
-/* Submit button: Span both columns and style it */
+/* Submit button: Full width, spans both columns */
 form button {
   grid-column: 1 / -1; /* Span all columns */
-  padding: 0.75em; /* Add padding inside button */
-  background-color: var(--color-accent); /* Accent color */
-  color: #fff; /* White text */
-  border: none; /* Remove border */
-  border-radius: 4px; /* Round corners */
-  font-size: 1em; /* Readable font size */
-  font-weight: bold; /* Bold text */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  padding: 0.75em; /* Add padding for better clickability */
+  background-color: var(--color-accent); /* Use the accent color */
+  color: #fff; /* White text for contrast */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Round corners for a modern look */
+  font-size: 1em; /* Use a readable font size */
+  font-weight: bold; /* Emphasize button text */
+  cursor: pointer; /* Show pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth color change on hover */
 }
 
-/* Button hover effect */
+/* Hover effect for the button */
 form button:hover {
-  background-color: oklch(65% 40% 0); /* Slightly darker accent color */
+  background-color: oklch(65% 40% 0); /* Darker accent color on hover */
 }
 
-/* Add some spacing between the form and content above */
+/* Adjust form alignment and spacing */
 form {
-  margin-top: 2em; /* Space above form */
+  margin-top: 2em; /* Add space above the form */
 }
