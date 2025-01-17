@@ -1,6 +1,8 @@
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
+  font-family: Arial, sans-serif; /* Or your chosen font */
+  line-height: 1.6; /* Good readability */
+  max-width: 100ch; /* Restrict the content width */
+  margin-inline: max(1em, (100% - 100ch) / 2); /* Center content */
+  padding-inline: 1em; /* Prevent content from touching the edges */
+  text-align: center; /* Center align all content */
 }
