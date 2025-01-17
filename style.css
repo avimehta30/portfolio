@@ -50,77 +50,88 @@ nav a:hover {
 /* General form styling */
 form {
   display: grid; /* Enable grid layout */
-  grid-template-columns: auto 1fr; /* Two columns: label (auto) and input (1fr) */
-  gap: 1em; /* Add space between elements */
-  max-width: 600px; /* Limit form width */
-  margin: 0 auto; /* Center form horizontally */
-  padding: 1em; /* Add padding around the form */
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 8px; /* Round corners */
-  background-color: #f9f9f9; /* Light background */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* General form styling */
-form {
-  display: grid; /* Enable grid layout */
   grid-template-columns: auto 1fr; /* Two columns: auto for labels, 1fr for inputs */
   gap: 1em; /* Add spacing between rows and columns */
   max-width: 600px; /* Limit form width */
   margin: 2em auto; /* Center the form horizontally */
-  padding: 1em; /* Add padding around the form */
+  padding: 1.5em; /* Add padding around the form */
   border: 1px solid #ddd; /* Add a light border */
   border-radius: 8px; /* Round the corners */
-  background-color: #f9f9f9; /* Add a light background color */
+  background-color: #fff; /* Use a white background */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
-/* Labels: Align on the left */
+/* Labels */
 form label {
   font: inherit; /* Inherit font styles from the page */
   grid-column: 1; /* Place labels in the first column */
-  margin-block: auto; /* Center labels vertically */
-  font-weight: bold; /* Make labels bold for emphasis */
+  align-self: center; /* Center labels vertically */
+  font-weight: bold; /* Make labels bold */
 }
 
-/* Inputs and textarea: Full-width fields in the second column */
+/* Input fields and textarea */
 form input,
 form textarea {
   grid-column: 2; /* Place inputs in the second column */
   width: 100%; /* Make inputs take full width */
-  padding: 0.5em; /* Add padding for usability */
+  padding: 0.6em; /* Add padding for usability */
   border: 1px solid #ccc; /* Add a light border */
-  border-radius: 4px; /* Round corners for modern design */
+  border-radius: 4px; /* Round corners */
   font: inherit; /* Use the same font as the rest of the page */
   box-sizing: border-box; /* Include padding and border in the width */
+  background-color: #f9f9f9; /* Add a light background color */
+}
+
+/* Add placeholder styling */
+form input::placeholder,
+form textarea::placeholder {
+  color: #aaa; /* Light grey for placeholders */
 }
 
 /* Textarea: Ensure it resizes properly */
 form textarea {
   resize: vertical; /* Allow vertical resizing */
-  min-height: 100px; /* Set a minimum height for usability */
+  min-height: 100px; /* Set a minimum height */
 }
 
-/* Submit button: Full width, spans both columns */
+/* Submit button styling */
 form button {
-  grid-column: 1 / -1; /* Span all columns */
+  grid-column: 1 / -1; /* Span both columns */
   padding: 0.75em; /* Add padding for better clickability */
-  background-color: var(--color-accent); /* Use the accent color */
+  background-color: #007bff; /* Accent blue color */
   color: #fff; /* White text for contrast */
   border: none; /* Remove default border */
   border-radius: 4px; /* Round corners for a modern look */
   font-size: 1em; /* Use a readable font size */
   font-weight: bold; /* Emphasize button text */
   cursor: pointer; /* Show pointer on hover */
-  transition: background-color 0.3s ease; /* Smooth color change on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-/* Hover effect for the button */
+/* Button hover effect */
 form button:hover {
-  background-color: oklch(65% 40% 0); /* Darker accent color on hover */
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* Adjust form alignment and spacing */
-form {
-  margin-top: 2em; /* Add space above the form */
+/* Navigation bar styling (to match the reference) */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em 0;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5em 1em;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease;
+}
+
+nav a:hover,
+nav a.current {
+  border-bottom: 2px solid #007bff;
 }
