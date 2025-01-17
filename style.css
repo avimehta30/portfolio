@@ -1,52 +1,10 @@
-/* General styling for the body */
 body {
-  font-family: Arial, sans-serif; /* Use a clean font */
-  line-height: 1.6; /* Better readability */
+    /* Set line height to 1.5 times the font size
+         and use the OS’s UI font as the website font
+       */
+  font: 100%/1.5 system-ui;
+  line-height: 1.6; /* Good for readability */
   max-width: 100ch; /* Prevent content from getting too wide */
-  margin-inline: max(1em, (100% - 100ch) / 2); /* Center content with minimum margin */
-  padding-inline: 1em; /* Add padding to prevent touching edges */
-  text-align: center; /* Center align content */
-}
-
-/* Center and style navigation links */
-nav {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-nav a {
-  text-decoration: none;
-  color: #007acc;
-  margin: 0 10px;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Content container */
-.content {
-  text-align: center;
-}
-
-/* Style the image */
-img {
-  display: block;
-  margin: 20px auto; /* Center the image */
-  max-width: 100%; /* Ensure the image scales down */
-  height: auto; /* Maintain the aspect ratio */
-}
-
-/* Style the heading */
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-
-/* Style the paragraph */
-p {
-  font-size: 1.1em;
-  text-align: justify; /* Improve readability */
-  margin: 0 auto;
-  max-width: 60ch; /* Restrict width for better readability */
+  margin-inline: max(1exam, (100% - 100ch) / 2); /* Ensures content remains centered with appropriate margins */
+  padding-inline: 1em; /* Prevents content from touching the edges */
 }
