@@ -168,6 +168,7 @@ nav a.current {
 .projects article h2 {
   font-size: 1.25em; /* Make headings slightly larger */
   margin: 0; /* Remove default margin */
+  line-height: 1.2;
 }
 
 .projects article p {
@@ -185,3 +186,17 @@ h1 {
   text-align: center; /* Center the heading */
 }
 
+h1 {
+  font-size: 4em; /* Make significantly larger to establish hierarchy */
+  line-height: 1.1; /* Smaller line height for better contrast */
+  text-wrap: balance; /* Prevent uneven line breaks */
+  margin-bottom: 1em; /* Add spacing below the main heading */
+  text-align: center; /* Center align for visual clarity */
+}
+
+/* General heading styles (h1, h2, h3, h4, h5, h6) */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1; /* Tighter leading for headings */
+  text-wrap: balance; /* Prevent uneven text wrapping */
+  margin: 0; /* Remove default margin to customize spacing */
+}
