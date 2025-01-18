@@ -200,3 +200,44 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance; /* Prevent uneven text wrapping */
   margin: 0; /* Remove default margin to customize spacing */
 }
+
+/* General styling for the main content */
+main {
+  max-width: 800px;
+  margin: 2em auto; /* Center the content */
+  padding: 1em;
+  text-align: center; /* Center-align headings and text */
+}
+
+/* Resume section styling */
+.resume-section {
+  margin-top: 2em; /* Add spacing above the resume section */
+  padding: 1em;
+  background-color: #f9f9f9; /* Light gray background for the section */
+  border: 1px solid #ddd; /* Light border for structure */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Resume image styling */
+.resume-image {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  border: 1px solid #ccc; /* Add a light border */
+  border-radius: 5px; /* Slightly round the corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  margin-top: 1em; /* Add spacing above the image */
+}
+
+/* Styling for download link */
+.resume-section a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Bold the link */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.resume-section a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
