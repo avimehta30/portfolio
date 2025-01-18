@@ -1,119 +1,108 @@
-/* Existing styles for the body */
 body {
-  font-family: Arial, sans-serif; /* Or your chosen font */
-  line-height: 1.6; /* Good readability */
-  max-width: 100ch; /* Restrict the content width */
-  margin-inline: max(1em, (100% - 100ch) / 2); /* Center content */
-  padding-inline: 1em; /* Prevent content from touching the edges */
-  text-align: center; /* Center align all content */
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  max-width: 100ch;
+  margin-inline: max(1em, (100% - 100ch) / 2);
+  padding-inline: 1em;
+  text-align: center;
 }
 
-/* Define the accent color */
 :root {
-  --color-accent: oklch(65% 50% 0); /* Accent color for hover and active states */
+  --color-accent: oklch(65% 50% 0);
 }
 
 html {
-  accent-color: var(--color-accent); /* Apply accent color globally */
+  accent-color: var(--color-accent);
 }
 
-/* Navigation bar styles */
 nav {
-  display: flex; /* Use Flexbox for layout */
-  justify-content: space-around; /* Spread links evenly */
-  align-items: center; /* Center links vertically */
-  margin-bottom: 1em; /* Add spacing below the navigation bar */
-  border-bottom: 1px solid oklch(80% 3% 200); /* Subtle bottom border */
-  padding: 0.5em 0; /* Add padding inside the nav bar */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1em;
+  border-bottom: 1px solid oklch(80% 3% 200);
+  padding: 0.5em 0;
 }
 
 nav a {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Use the same text color as the parent */
-  text-align: center; /* Center text inside the links */
-  flex: 1; /* Make all links take equal width */
-  padding: 0.5em; /* Add padding inside each link */
-  border-bottom: 0; /* Remove default border */
-  transition: all 0.3s ease-in-out; /* Smooth hover effects */
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  flex: 1;
+  padding: 0.5em;
+  border-bottom: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 nav a.current {
-  border-bottom: 0.4em solid oklch(80% 3% 200); /* Highlight active page */
-  padding-bottom: 0.1em; /* Reduce bottom padding to counter the border */
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.1em;
 }
 
 nav a:hover {
-  border-bottom: 0.4em solid var(--color-accent); /* Highlight hover with accent color */
-  background-color: oklch(95% 5% 0); /* Subtle background on hover */
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: oklch(95% 5% 0);
 }
 
-/* General form styling */
 form {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: auto 1fr; /* Two columns: auto for labels, 1fr for inputs */
-  gap: 1em; /* Add spacing between rows and columns */
-  max-width: 600px; /* Limit form width */
-  margin: 2em auto; /* Center the form horizontally */
-  padding: 1.5em; /* Add padding around the form */
-  border: 1px solid #ddd; /* Add a light border */
-  border-radius: 8px; /* Round the corners */
-  background-color: #fff; /* Use a white background */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 1.5em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Labels */
 form label {
-  font: inherit; /* Inherit font styles from the page */
-  grid-column: 1; /* Place labels in the first column */
-  align-self: center; /* Center labels vertically */
-  font-weight: bold; /* Make labels bold */
+  font: inherit;
+  grid-column: 1;
+  align-self: center;
+  font-weight: bold;
 }
 
-/* Input fields and textarea */
 form input,
 form textarea {
-  grid-column: 2; /* Place inputs in the second column */
-  width: 100%; /* Make inputs take full width */
-  padding: 0.6em; /* Add padding for usability */
-  border: 1px solid #ccc; /* Add a light border */
-  border-radius: 4px; /* Round corners */
-  font: inherit; /* Use the same font as the rest of the page */
-  box-sizing: border-box; /* Include padding and border in the width */
-  background-color: #f9f9f9; /* Add a light background color */
+  grid-column: 2;
+  width: 100%;
+  padding: 0.6em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
 }
 
-/* Add placeholder styling */
 form input::placeholder,
 form textarea::placeholder {
-  color: #aaa; /* Light grey for placeholders */
+  color: #aaa;
 }
 
-/* Textarea: Ensure it resizes properly */
 form textarea {
-  resize: vertical; /* Allow vertical resizing */
-  min-height: 100px; /* Set a minimum height */
+  resize: vertical;
+  min-height: 100px;
 }
 
-/* Submit button styling */
 form button {
-  grid-column: 1 / -1; /* Span both columns */
-  padding: 0.75em; /* Add padding for better clickability */
-  background-color: #007bff; /* Accent blue color */
-  color: #fff; /* White text for contrast */
-  border: none; /* Remove default border */
-  border-radius: 4px; /* Round corners for a modern look */
-  font-size: 1em; /* Use a readable font size */
-  font-weight: bold; /* Emphasize button text */
-  cursor: pointer; /* Show pointer on hover */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  grid-column: 1 / -1;
+  padding: 0.75em;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Button hover effect */
 form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
-/* Navigation bar styling (to match the reference) */
 nav {
   display: flex;
   justify-content: space-around;
@@ -136,108 +125,89 @@ nav a.current {
   border-bottom: 2px solid #007bff;
 }
 
-/* General grid styling for the .projects container */
 .projects {
-  display: grid; /* Enable grid layout */
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Responsive grid */
-  gap: 1em; /* Add spacing between grid items */
-  padding: 1em; /* Add some padding around the grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+  padding: 1em;
 }
 
-/* Article styling for alignment */
 .projects article {
-  display: grid; /* Make articles grid containers */
-  grid-template-rows: subgrid; /* Align rows across the grid */
-  grid-row: span 3; /* Each article spans 3 rows */
-  padding: 1em; /* Add padding inside each article */
-  border: 1px solid #ddd; /* Add a light border */
-  border-radius: 8px; /* Round corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  background-color: #fff; /* White background for articles */
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-/* Image styling for alignment */
 .projects article img {
-  width: 100%; /* Make images responsive */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Ensure no inline gap below the image */
-  margin-bottom: 1em; /* Add space below the image */
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 1em;
 }
 
-/* Heading and paragraph styling within articles */
 .projects article h2 {
-  font-size: 1.25em; /* Make headings slightly larger */
-  margin: 0; /* Remove default margin */
+  font-size: 1.25em;
+  margin: 0;
   line-height: 1.2;
 }
 
 .projects article p {
-  font-size: 1em; /* Normal paragraph size */
-  line-height: 1.5; /* Improve readability */
-  margin: 0; /* Remove default margin */
-}
-
-/* Style the main heading (h1) */
-h1 {
-  font-size: 4em; /* Make significantly larger */
-  line-height: 1.1; /* Smaller line height for headings */
-  text-wrap: balance; /* Prevent uneven line breaks */
-  margin-bottom: 1em; /* Add space below the main heading */
-  text-align: center; /* Center the heading */
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
 }
 
 h1 {
-  font-size: 4em; /* Make significantly larger to establish hierarchy */
-  line-height: 1.1; /* Smaller line height for better contrast */
-  text-wrap: balance; /* Prevent uneven line breaks */
-  margin-bottom: 1em; /* Add spacing below the main heading */
-  text-align: center; /* Center align for visual clarity */
+  font-size: 4em;
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 1em;
+  text-align: center;
 }
 
-/* General heading styles (h1, h2, h3, h4, h5, h6) */
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.1; /* Tighter leading for headings */
-  text-wrap: balance; /* Prevent uneven text wrapping */
-  margin: 0; /* Remove default margin to customize spacing */
+  line-height: 1.1;
+  text-wrap: balance;
+  margin: 0;
 }
 
-/* General styling for the main content */
 main {
   max-width: 800px;
-  margin: 2em auto; /* Center the content */
+  margin: 2em auto;
   padding: 1em;
-  text-align: center; /* Center-align headings and text */
+  text-align: center;
 }
 
-/* Resume section styling */
 .resume-section {
-  margin-top: 2em; /* Add spacing above the resume section */
+  margin-top: 2em;
   padding: 1em;
-  background-color: #f9f9f9; /* Light gray background for the section */
-  border: 1px solid #ddd; /* Light border for structure */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Resume image styling */
 .resume-image {
-  max-width: 100%; /* Ensure the image is responsive */
-  height: auto; /* Maintain aspect ratio */
-  border: 1px solid #ccc; /* Add a light border */
-  border-radius: 5px; /* Slightly round the corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  margin-top: 1em; /* Add spacing above the image */
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 1em;
 }
 
-/* Styling for download link */
 .resume-section a {
-  color: #007bff; /* Blue link color */
-  text-decoration: none; /* Remove underline */
-  font-weight: bold; /* Bold the link */
-  transition: color 0.3s ease; /* Smooth color transition on hover */
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .resume-section a:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #0056b3;
 }
-
