@@ -135,3 +135,53 @@ nav a:hover,
 nav a.current {
   border-bottom: 2px solid #007bff;
 }
+
+/* General grid styling for the .projects container */
+.projects {
+  display: grid; /* Enable grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); /* Responsive grid */
+  gap: 1em; /* Add spacing between grid items */
+  padding: 1em; /* Add some padding around the grid */
+}
+
+/* Article styling for alignment */
+.projects article {
+  display: grid; /* Make articles grid containers */
+  grid-template-rows: subgrid; /* Align rows across the grid */
+  grid-row: span 3; /* Each article spans 3 rows */
+  padding: 1em; /* Add padding inside each article */
+  border: 1px solid #ddd; /* Add a light border */
+  border-radius: 8px; /* Round corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #fff; /* White background for articles */
+}
+
+/* Image styling for alignment */
+.projects article img {
+  width: 100%; /* Make images responsive */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Ensure no inline gap below the image */
+  margin-bottom: 1em; /* Add space below the image */
+}
+
+/* Heading and paragraph styling within articles */
+.projects article h2 {
+  font-size: 1.25em; /* Make headings slightly larger */
+  margin: 0; /* Remove default margin */
+}
+
+.projects article p {
+  font-size: 1em; /* Normal paragraph size */
+  line-height: 1.5; /* Improve readability */
+  margin: 0; /* Remove default margin */
+}
+
+/* Style the main heading (h1) */
+h1 {
+  font-size: 4em; /* Make significantly larger */
+  line-height: 1.1; /* Smaller line height for headings */
+  text-wrap: balance; /* Prevent uneven line breaks */
+  margin-bottom: 1em; /* Add space below the main heading */
+  text-align: center; /* Center the heading */
+}
+
