@@ -5,31 +5,12 @@ body {
   margin-inline: max(1em, (100% - 100ch) / 2);
   padding-inline: 1em;
   text-align: center;
-  background-color: white;
-  color: black;
 }
 
 :root {
-  color-scheme: light; /* Force light mode */
+  color-scheme: light dark;
   --color-accent: oklch(65% 50% 0);
-  --border-color: oklch(80% 3% 200);
-  --background-color: white;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: canvas;
-    --border-color: oklch(50% 10% 200 / 40%);
-  }
-
-  body {
-    background-color: var(--background-color);
-    color: white;
-  }
-
-  nav a {
-    color: white;
-  }
+  --border-color: oklch(50% 10% 200 / 40%);
 }
 
 html {
@@ -43,26 +24,26 @@ nav {
   margin-bottom: 1em;
   border-bottom: 1px solid var(--border-color);
   padding: 0.5em 0;
-  background-color: var(--background-color);
 }
 
 nav a {
   text-decoration: none;
-  color: black;
+  color: inherit;
   text-align: center;
   flex: 1;
   padding: 0.5em;
-  border-bottom: 2px solid transparent;
+  border-bottom: 0;
   transition: all 0.3s ease-in-out;
 }
 
 nav a.current {
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 0.4em solid var(--border-color);
+  padding-bottom: 0.1em;
 }
 
 nav a:hover {
-  border-bottom: 2px solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), var(--background-color) 85%);
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 form {
@@ -74,7 +55,7 @@ form {
   padding: 1.5em;
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  background-color: var(--background-color);
+  background-color: var(--background-color, canvas);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -94,7 +75,7 @@ form textarea {
   border-radius: 4px;
   font: inherit;
   box-sizing: border-box;
-  background-color: var(--background-color);
+  background-color: var(--background-color, canvas);
 }
 
 form input::placeholder,
@@ -139,7 +120,7 @@ form button:hover {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: var(--background-color);
+  background-color: var(--background-color, canvas);
 }
 
 .projects article img {
@@ -185,7 +166,7 @@ main {
 .resume-section {
   margin-top: 2em;
   padding: 1em;
-  background-color: var(--background-color);
+  background-color: var(--background-color, canvas);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -217,7 +198,7 @@ main {
   right: 1rem;
   font-size: 80%;
   font-family: inherit;
-  background-color: var(--background-color);
+  background-color: var(--background-color, canvas);
   padding: 0.5em;
   border: 1px solid var(--border-color);
   border-radius: 5px;
