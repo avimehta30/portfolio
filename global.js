@@ -16,17 +16,24 @@ const pages = [
 const nav = document.createElement('nav');
 document.body.prepend(nav);
 
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
+
 for (let p of pages) {
+  let url = p.url;
+  let title = p.title;
+  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+
   let a = document.createElement('a');
-  a.href = p.url;
-  a.textContent = p.title;
+  a.href = url;
+  a.textContent = title;
+  a.classList.toggle(
+    'current',
+    a.host === location.host && a.pathname === location.pathname
+  );
+  a.toggleAttribute('target', a.host !== location.host);
+  a.target = a.host !== location.host ? '_blank' : '';
 
-  // Open external links in a new tab
-  if (p.url.startsWith('http')) {
-    a.target = '_blank';
-  }
-
-  nav.appendChild(a);
+  nav.append(a);
 }
 
 // Step 2: Fetch JSON data
