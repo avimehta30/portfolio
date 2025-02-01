@@ -8,9 +8,7 @@ body {
 }
 
 :root {
-  color-scheme: light dark;
   --color-accent: oklch(65% 50% 0);
-  --border-color: oklch(50% 10% 200 / 40%);
 }
 
 html {
@@ -22,7 +20,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   margin-bottom: 1em;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid oklch(80% 3% 200);
   padding: 0.5em 0;
 }
 
@@ -37,13 +35,13 @@ nav a {
 }
 
 nav a.current {
-  border-bottom: 0.4em solid var(--border-color);
+  border-bottom: 0.4em solid oklch(80% 3% 200);
   padding-bottom: 0.1em;
 }
 
 nav a:hover {
   border-bottom: 0.4em solid var(--color-accent);
-  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  background-color: oklch(95% 5% 0);
 }
 
 form {
@@ -53,9 +51,9 @@ form {
   max-width: 600px;
   margin: 2em auto;
   padding: 1.5em;
-  border: 1px solid var(--border-color);
+  border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: var(--background-color, canvas);
+  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -71,11 +69,11 @@ form textarea {
   grid-column: 2;
   width: 100%;
   padding: 0.6em;
-  border: 1px solid var(--border-color);
+  border: 1px solid #ccc;
   border-radius: 4px;
   font: inherit;
   box-sizing: border-box;
-  background-color: var(--background-color, canvas);
+  background-color: #f9f9f9;
 }
 
 form input::placeholder,
@@ -91,7 +89,7 @@ form textarea {
 form button {
   grid-column: 1 / -1;
   padding: 0.75em;
-  background-color: var(--color-accent);
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -102,7 +100,29 @@ form button {
 }
 
 form button:hover {
-  background-color: color-mix(in oklch, var(--color-accent), black 50%);
+  background-color: #0056b3;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em 0;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5em 1em;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease;
+}
+
+nav a:hover,
+nav a.current {
+  border-bottom: 2px solid #007bff;
 }
 
 .projects {
@@ -117,10 +137,10 @@ form button:hover {
   grid-template-rows: subgrid;
   grid-row: span 3;
   padding: 1em;
-  border: 1px solid var(--border-color);
+  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: var(--background-color, canvas);
+  background-color: #fff;
 }
 
 .projects article img {
@@ -166,8 +186,8 @@ main {
 .resume-section {
   margin-top: 2em;
   padding: 1em;
-  background-color: var(--background-color, canvas);
-  border: 1px solid var(--border-color);
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -175,31 +195,19 @@ main {
 .resume-image {
   max-width: 100%;
   height: auto;
-  border: 1px solid var(--border-color);
+  border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-top: 1em;
 }
 
 .resume-section a {
-  color: var(--color-accent);
+  color: #007bff;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 .resume-section a:hover {
-  color: color-mix(in oklch, var(--color-accent), black 50%);
-}
-
-.color-scheme {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 80%;
-  font-family: inherit;
-  background-color: var(--background-color, canvas);
-  padding: 0.5em;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
+  color: #0056b3;
 }
