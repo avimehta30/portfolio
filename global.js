@@ -1,6 +1,6 @@
 // global.js
 
-console.log('IT’S ALIVE!');
+console.log("IT’S ALIVE!");
 
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
@@ -8,45 +8,45 @@ function $$(selector, context = document) {
 
 // Step 3: Automatic navigation menu
 const pages = [
-  { url: '', title: 'Home' },
-  { url: 'projects/', title: 'Projects' },
-  { url: 'contact/', title: 'Contact' },
-  { url: 'resume/', title: 'Resume' },
-  { url: 'https://github.com/avimehta30', title: 'GitHub' },
+  { url: "", title: "Home" },
+  { url: "projects/", title: "Projects" },
+  { url: "contact/", title: "Contact" },
+  { url: "resume/", title: "Resume" },
+  { url: "https://github.com/avimehta30", title: "GitHub" },
 ];
 
-const nav = document.createElement('nav');
+const nav = document.createElement("nav");
 document.body.prepend(nav);
 
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
+const ARE_WE_HOME = location.pathname.endsWith("index.html") || location.pathname === "/";
 
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
 
   // Adjust URL for non-home pages
-  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+  url = !ARE_WE_HOME && !url.startsWith("http") ? "../" + url : url;
 
   // Create link element
-  let a = document.createElement('a');
+  let a = document.createElement("a");
   a.href = url;
   a.textContent = title;
-  
+
   // Add 'current' class for the current page
   a.classList.toggle(
-    'current',
+    "current",
     a.host === location.host && a.pathname === location.pathname
   );
 
   // Open external links in a new tab
-  a.toggleAttribute('target', a.host !== location.host);
-  a.target = a.host !== location.host ? '_blank' : '';
+  if (a.host !== location.host) {
+    a.setAttribute("target", "_blank");
+  }
 
   nav.append(a);
 }
 
 // Step 4: Automatic dark mode switch
-// Add the dark mode switcher to the page
 const themeSwitcher = `
   <label class="color-scheme">
     Theme:
@@ -57,21 +57,90 @@ const themeSwitcher = `
     </select>
   </label>
 `;
-document.body.insertAdjacentHTML('afterbegin', themeSwitcher);
+document.body.insertAdjacentHTML("afterbegin", themeSwitcher);
 
-// Set up the dark mode functionality
-const select = document.querySelector('.color-scheme select');
+const select = document.querySelector(".color-scheme select");
 
 // Load saved preference if it exists
 if ("colorScheme" in localStorage) {
   const savedScheme = localStorage.colorScheme;
-  document.documentElement.style.setProperty('color-scheme', savedScheme);
+  document.documentElement.style.setProperty("color-scheme", savedScheme);
   select.value = savedScheme;
 }
 
 // Add event listener to update the color scheme
-select.addEventListener('input', (event) => {
+select.addEventListener("input", (event) => {
   const value = event.target.value;
-  document.documentElement.style.setProperty('color-scheme', value);
+  document.documentElement.style.setProperty("color-scheme", value);
   localStorage.colorScheme = value;
 });
+
+// Step 1.2: Importing Project Data into the Projects Page
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch JSON: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching JSON data:", error);
+    return []; // Return an empty array to prevent further issues
+  }
+}
+
+// Step 1.3: Creating the renderProjects Function
+export function renderProjects(project, containerElement, headingLevel = "h2") {
+  // Validate containerElement
+  if (!(containerElement instanceof HTMLElement)) {
+    console.error("Invalid container element provided.");
+    return;
+  }
+
+  // Validate headingLevel
+  const validHeadings = ["h1", "h2", "h3", "h4", "h5", "h6"];
+  if (!validHeadings.includes(headingLevel)) {
+    console.warn(`Invalid heading level: ${headingLevel}, defaulting to h2.`);
+    headingLevel = "h2";
+  }
+
+  // Clear existing content to avoid duplicates
+  containerElement.innerHTML = "";
+
+  // Create the article element
+  const article = document.createElement("article");
+
+  // Define the content dynamically
+  article.innerHTML = `
+      <${headingLevel}>${project.title}</${headingLevel}>
+      <img src="${project.image || 'https://via.placeholder.com/300'}" alt="${project.title || 'No title available'}">
+      <p>${project.description || "No description available."}</p>
+  `;
+
+  // Append the article to the container
+  containerElement.appendChild(article);
+}
+
+// Step 5: Dynamically Load Projects
+async function loadProjects() {
+  const projectsContainer = document.getElementById("projects-container");
+  if (!projectsContainer) return; // Only run on the projects page
+
+  try {
+    const projects = await fetchJSON("projects.json");
+
+    if (projects.length === 0) {
+      projectsContainer.innerHTML = "<p>No projects available.</p>";
+      return;
+    }
+
+    projects.forEach((project) => {
+      renderProjects(project, projectsContainer, "h3");
+    });
+  } catch (error) {
+    console.error("Error loading projects:", error);
+    projectsContainer.innerHTML = "<p>Failed to load projects.</p>";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadProjects);
