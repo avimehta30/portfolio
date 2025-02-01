@@ -6,34 +6,27 @@ function $$(selector, context = document) {
 
 // Step 1: Automatic navigation menu
 const pages = [
-  { url: '', title: 'Home' },
-  { url: 'projects/', title: 'Projects' },
-  { url: 'contact/', title: 'Contact' },
-  { url: 'resume/', title: 'Resume' },
+  { url: './', title: 'Home' },
+  { url: './projects/index.html', title: 'Projects' },
+  { url: './contact/index.html', title: 'Contact' },
+  { url: './resume/index.html', title: 'Resume' },
   { url: 'https://github.com/avimehta30', title: 'GitHub' },
 ];
 
 const nav = document.createElement('nav');
 document.body.prepend(nav);
 
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
-
 for (let p of pages) {
-  let url = p.url;
-  let title = p.title;
-  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
-
   let a = document.createElement('a');
-  a.href = url;
-  a.textContent = title;
-  a.classList.toggle(
-    'current',
-    a.host === location.host && a.pathname === location.pathname
-  );
-  a.toggleAttribute('target', a.host !== location.host);
-  a.target = a.host !== location.host ? '_blank' : '';
+  a.href = p.url;
+  a.textContent = p.title;
 
-  nav.append(a);
+  // Open external links in a new tab
+  if (p.url.startsWith('http')) {
+    a.target = '_blank';
+  }
+
+  nav.appendChild(a);
 }
 
 // Step 2: Fetch JSON data
