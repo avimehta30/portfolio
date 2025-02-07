@@ -60,29 +60,48 @@ export async function fetchGitHubData(username) {
 
 // Step 4: Rendering Projects Function
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
-    if (!containerElement) {
-        console.error('Error: containerElement is null or undefined.');
-        return;
-    }
-    containerElement.innerHTML = '';
-    projects.forEach(project => {
-        const article = document.createElement('article');
-        const headingTag = document.createElement(headingLevel);
-        headingTag.textContent = project.title || 'Untitled Project';
+  if (!containerElement) {
+      console.error('Error: containerElement is null or undefined.');
+      return;
+  }
+  
+  containerElement.innerHTML = ''; // Clear previous content
 
-        const image = document.createElement('img');
-        image.src = project.image || 'https://via.placeholder.com/150';
-        image.alt = project.title || 'Project Image';
+  projects.forEach(project => {
+      const article = document.createElement('article');
 
-        const description = document.createElement('p');
-        description.textContent = project.description || 'No description available.';
+      // Create the project title
+      const headingTag = document.createElement(headingLevel);
+      headingTag.textContent = project.title || 'Untitled Project';
 
-        article.appendChild(headingTag);
-        article.appendChild(image);
-        article.appendChild(description);
-        containerElement.appendChild(article);
-    });
+      // Create the project image
+      const image = document.createElement('img');
+      image.src = project.image || 'https://via.placeholder.com/150';
+      image.alt = project.title || 'Project Image';
+
+      // Wrapper for description and year
+      const infoWrapper = document.createElement('div');
+      infoWrapper.classList.add('project-info');
+
+      // Create the project description
+      const description = document.createElement('p');
+      description.textContent = project.description || 'No description available.';
+
+      // Create the project year
+      const year = document.createElement('p');
+      year.textContent = `Year: ${project.year || 'N/A'}`;
+      year.classList.add('project-year');
+
+      // Append elements
+      infoWrapper.appendChild(description);
+      infoWrapper.appendChild(year);
+      article.appendChild(headingTag);
+      article.appendChild(image);
+      article.appendChild(infoWrapper);
+      containerElement.appendChild(article);
+  });
 }
+
 
 // Step 5: Load Projects on the Projects page
 async function loadProjects() {
