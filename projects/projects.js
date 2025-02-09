@@ -78,15 +78,23 @@ function renderPieChart(projectsGiven) {
         .append("g")
         .attr("transform", `translate(0,0)`); 
 
-    // ✅ Append Paths for Pie Chart
-    g.selectAll("path")
+    // ✅ Append Paths for Pie Chart & Hover Effect
+    let paths = g.selectAll("path")
         .data(arcData)
         .enter()
         .append("path")
         .attr("d", arcGenerator)
         .attr("fill", (d, i) => colors(i))
         .attr("stroke", "black")
-        .attr("stroke-width", 1);
+        .attr("stroke-width", 1)
+        .style("transition", "opacity 300ms") // ✅ Smooth transition
+        .on("mouseover", function () {
+            d3.selectAll("#projects-plot path").attr("opacity", 0.5);
+            d3.select(this).attr("opacity", 1);
+        })
+        .on("mouseout", function () {
+            d3.selectAll("#projects-plot path").attr("opacity", 1);
+        });
 
     // ✅ Generate Legend
     legend.selectAll("li")
