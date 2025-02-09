@@ -303,4 +303,13 @@ main {
   border-radius: 8px;
 }
 
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+
+
 
