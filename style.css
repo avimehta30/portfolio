@@ -307,7 +307,6 @@ svg:has(path:hover) path:not(:hover) {
   opacity: 0.5;
 }
 
-/* ✅ Smooth transitions for better UX */
 path {
   transition: 300ms;
   cursor: pointer;
@@ -329,7 +328,6 @@ path {
   }
 }
 
-/* ✅ Highlight legend when pie slice is selected */
 .legend-item.selected {
   font-weight: bold;
   text-decoration: underline;
