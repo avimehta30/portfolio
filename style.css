@@ -303,6 +303,16 @@ main {
   border-radius: 8px;
 }
 
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+/* ✅ Smooth transitions for better UX */
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
 .selected {
   --color: oklch(60% 45% 0) !important;
 }
@@ -310,6 +320,21 @@ main {
 .selected:is(path) {
   fill: var(--color);
 }
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+/* ✅ Highlight legend when pie slice is selected */
+.legend-item.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 
 
 

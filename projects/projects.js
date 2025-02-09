@@ -1,6 +1,8 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 import { fetchJSON, renderProjects } from '../global.js';
 
+let selectedIndex = -1; // Tracks the selected wedge
+
 async function loadProjects() {
     // Fetch project data from projects.json
     const projects = await fetchJSON('../lib/projects.json');
@@ -78,7 +80,7 @@ function renderPieChart(projectsGiven) {
         .append("g")
         .attr("transform", `translate(0,0)`); 
 
-    // ✅ Append Paths for Pie Chart & Hover Effect
+    // ✅ Append Paths for Pie Chart
     let paths = g.selectAll("path")
         .data(arcData)
         .enter()
@@ -87,23 +89,46 @@ function renderPieChart(projectsGiven) {
         .attr("fill", (d, i) => colors(i))
         .attr("stroke", "black")
         .attr("stroke-width", 1)
-        .style("transition", "opacity 300ms") // ✅ Smooth transition
+        .attr("cursor", "pointer") // ✅ Cursor Indication
         .on("mouseover", function () {
-            d3.selectAll("#projects-plot path").attr("opacity", 0.5);
-            d3.select(this).attr("opacity", 1);
+            d3.select(this.parentNode).classed("hover", true);
         })
         .on("mouseout", function () {
-            d3.selectAll("#projects-plot path").attr("opacity", 1);
+            d3.select(this.parentNode).classed("hover", false);
+        })
+        .on("click", function (event, d) {
+            let index = arcData.indexOf(d);
+
+            // ✅ Deselect if already selected, otherwise update selection
+            selectedIndex = selectedIndex === index ? -1 : index;
+
+            // ✅ Update Pie Chart Selection
+            paths.classed("selected", (_, idx) => idx === selectedIndex);
+
+            // ✅ Update Legend Selection
+            legend.selectAll("li").classed("selected", (_, idx) => idx === selectedIndex);
         });
 
-    // ✅ Generate Legend
-    legend.selectAll("li")
+    // ✅ Generate Legend and Click Interaction
+    let legendItems = legend.selectAll("li")
         .data(data)
         .enter()
         .append("li")
         .attr("class", "legend-item")
         .attr("style", (d, i) => `--color: ${colors(i)}`)
-        .html((d) => `<span class="swatch"></span> ${d.label} (${d.value})`);
+        .html((d) => `<span class="swatch"></span> ${d.label} (${d.value})`)
+        .on("click", function (event, d) {
+            let index = data.indexOf(d);
+
+            // ✅ Toggle selection
+            selectedIndex = selectedIndex === index ? -1 : index;
+
+            // ✅ Update Pie Chart Selection
+            paths.classed("selected", (_, idx) => idx === selectedIndex);
+
+            // ✅ Update Legend Selection
+            legendItems.classed("selected", (_, idx) => idx === selectedIndex);
+        });
 }
 
 // Run function when the page loads
