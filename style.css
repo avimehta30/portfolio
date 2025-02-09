@@ -240,10 +240,67 @@ main {
   margin: 0;
 }
 
-#projects-plot {
+/* #projects-plot {
   max-width: 20em;
   margin-block: 2em;
 
   overflow: visible;
+} */
+
+.legend {
+  flex: 1; /* Let the legend take available space */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 10px;
+  padding: 10px;
+  list-style: none;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
 }
+
+/* ✅ Style each legend item */
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+/* ✅ Swatch: Colored circle for each legend item */
+.legend .swatch {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: var(--color);
+}
+
+/* ✅ Style the container to align pie chart & legend side by side */
+.container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: center;
+  gap: 20px; /* Space between pie chart and legend */
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+/* ✅ Ensure the pie chart remains properly sized */
+#projects-plot {
+  flex-shrink: 0;
+  max-width: 200px;
+}
+
+/* ✅ Allow legend to take remaining space */
+.legend {
+  flex: 1; /* Let the legend take available space */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 10px;
+  padding: 10px;
+  list-style: none;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
 

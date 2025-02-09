@@ -1,14 +1,19 @@
 // projects.js
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
 import { fetchJSON, renderProjects } from '../global.js';
-let data = [1, 2, 3, 4, 5, 5];
 
-// Compute total sum of data
-let total = data.reduce((sum, d) => sum + d, 0);
+// ✅ Updated Data with Labels
+let data = [
+    { value: 1, label: 'Apples' },
+    { value: 2, label: 'Oranges' },
+    { value: 3, label: 'Mangos' },
+    { value: 4, label: 'Pears' },
+    { value: 5, label: 'Limes' },
+    { value: 5, label: 'Cherries' },
+];
 
-// Compute start and end angles for each slice
-let angle = 0;
-let sliceGenerator = d3.pie();
+// ✅ Using d3.pie() to read 'value' property
+let sliceGenerator = d3.pie().value((d) => d.value);
 let arcData = sliceGenerator(data);
 
 // Define colors
@@ -22,8 +27,6 @@ let arcGenerator = d3.arc()
     .innerRadius(0)
     .outerRadius(50);
 
-let arcs = arcData.map((d) => arcGenerator(d));
-
 // Append paths dynamically based on arcData
 arcData.forEach((d, idx) => {
     svg.append("path")
@@ -31,7 +34,26 @@ arcData.forEach((d, idx) => {
         .attr("fill", colors(idx))
         .attr("stroke", "black")
         .attr("stroke-width", 1);
-});
+    });
+
+    let legend = d3.select('.legend');
+    data.forEach((d, idx) => {
+        legend.append('li')
+            .attr('class', 'legend-item')
+            .attr('style', `--color:${colors(idx)}`) // Assign the same color as the pie chart
+            .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+    });
+
+//     // ✅ Append Labels to Slices
+//     let centroid = arcGenerator.centroid(d);
+//     svg.append("text")
+//         .attr("x", centroid[0])
+//         .attr("y", centroid[1])
+//         .attr("text-anchor", "middle")
+//         .attr("font-size", "10px")
+//         .attr("fill", "black")
+//         .text(data[idx].label);
+// });
 
 async function loadProjects() {
     // Fetch project data from projects.json
